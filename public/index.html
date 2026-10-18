@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QMOOSA Web4 — NIST FIPS 204 ML-DSA Quantum Security Terminal</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f2937;
+      --accent: #10b981;
+      --accent-pqc: #8b5cf6;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .title h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .title p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .badge-bar {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .badge-pqc {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-pqc);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .param-table th, .param-table td {
+      padding: 0.6rem 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .param-table th {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .code-box {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #34d399;
+      overflow-x: auto;
+      max-height: 180px;
+      word-break: break-all;
+    }
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .metric-val {
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+    .btn {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="title">
+      <h1>QMOOSA Web4 Post-Quantum Security Radar</h1>
+      <p>NIST FIPS 204: Module-Lattice-Based Digital Signature Standard (ML-DSA / CRYSTALS-Dilithium)</p>
+    </div>
+    <div class="badge-bar">
+      <span class="badge badge-pqc" id="badge-pqc">NIST FIPS 204 APPROVED</span>
+      <span class="badge badge-danger" id="badge-lock">DEPLOYMENT: LOCKED (0/1,000 CERTIFIED)</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid">
+      <!-- Card 1: Parameter Set Matrix -->
+      <article class="card">
+        <h2>FIPS 204 Parameter Sets</h2>
+        <table class="param-table" id="param-table">
+          <thead>
+            <tr>
+              <th>Set</th>
+              <th>Category</th>
+              <th>Public Key</th>
+              <th>Signature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ML-DSA-44</strong></td>
+              <td>NIST 2 (AES-128)</td>
+              <td>1,312 B</td>
+              <td>2,420 B</td>
+            </tr>
+            <tr style="background: rgba(139, 92, 246, 0.08);">
+              <td><strong>ML-DSA-65*</strong></td>
+              <td>NIST 3 (AES-192)</td>
+              <td>1,952 B</td>
+              <td>3,309 B</td>
+            </tr>
+            <tr>
+              <td><strong>ML-DSA-87</strong></td>
+              <td>NIST 5 (AES-256)</td>
+              <td>2,592 B</td>
+              <td>4,627 B</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">*Primary Web4 transaction authorization standard.</p>
+      </article>
+
+      <!-- Card 2: Quantum Resistance Radar -->
+      <article class="card">
+        <h2>Quantum Threat Resistance Matrix</h2>
+        <div class="metric">
+          <span>Shor's Algorithm (ECDSA / RSA)</span>
+          <span class="metric-val" style="color: var(--danger);">VULNERABLE (0 bits)</span>
+        </div>
+        <div class="metric">
+          <span>ML-DSA Lattice SVP (Primal/Dual)</span>
+          <span class="metric-val" style="color: var(--accent);">IMMUNE (192+ bits)</span>
+        </div>
+        <div class="metric">
+          <span>Grover Collision Resistance</span>
+          <span class="metric-val" style="color: var(--accent);">IMMUNE (128+ bits)</span>
+        </div>
+        <div class="metric">
+          <span>Polynomial Ring Modulus ($q$)</span>
+          <span class="metric-val">8,380,417 ($2^{23}-2^{13}+1$)</span>
+        </div>
+        <div class="metric">
+          <span>Ring Dimension ($n$)</span>
+          <span class="metric-val">256</span>
+        </div>
+      </article>
+
+      <!-- Card 3: Live Verification Simulator -->
+      <article class="card">
+        <h2>Web4 Transaction Authorization Radar</h2>
+        <div style="margin-bottom: 0.75rem;">
+          <label style="font-size: 0.8rem; color: var(--text-muted);">Current Transaction State Root:</label>
+          <div class="code-box" id="state-root">0x7f9a88c2b5d4e101aa029f44ce91a5e393963205e558b1c83495148d58761422</div>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button class="btn" id="btn-sign" onclick="simulateSign()">Sign Transaction</button>
+          <button class="btn btn-secondary" id="btn-corrupt" onclick="simulateCorrupt()">Adversarial Tamper</button>
+        </div>
+        <div id="status-message" style="margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--accent);">
+          Signature Status: VERIFIED VALID
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    function simulateSign() {
+      const msg = document.getElementById('status-message');
+      msg.style.color = '#10b981';
+      msg.textContent = 'Signature Status: VERIFIED VALID (ML-DSA-65 / 3309 Bytes)';
+    }
+
+    function simulateCorrupt() {
+      const msg = document.getElementById('status-message');
+      msg.style.color = '#ef4444';
+      msg.textContent = 'Signature Status: REJECTED (Bit Corruption Detected by FIPS 204 Reality Gate)';
+    }
+  </script>
+</body>
+</html>

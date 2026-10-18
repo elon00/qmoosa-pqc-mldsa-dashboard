@@ -1,0 +1,25 @@
+{
+  "name": "@qmoosa/pqc-mldsa-dashboard",
+  "version": "1.0.0",
+  "description": "QMOOSA Post-Quantum Cryptography — NIST FIPS 204 ML-DSA Interactive Quantum Security Terminal",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/dashboard.test.mjs",
+    "lint": "node --check tests/dashboard.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7"
+  },
+  "keywords": [
+    "qmoosa",
+    "pqc",
+    "fips-204",
+    "ml-dsa",
+    "dilithium",
+    "dashboard",
+    "quantum-safe",
+    "web4"
+  ],
+  "author": "elon00",
+  "license": "MIT"
+}
